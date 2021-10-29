@@ -121,7 +121,7 @@ const SignupForm = () => {
 					type="submit"
 					variant="success"
 				>
-					Submit
+					{error ? "Try again" : "Submit"}
 				</Button>
 			</Form>
 		</>
