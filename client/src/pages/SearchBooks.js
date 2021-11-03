@@ -48,12 +48,15 @@ const SearchBooks = () => {
 
 			const { items } = await response.json();
 
+			console.log("items: ", items);
+
 			const bookData = items.map((book) => ({
 				bookId: book.id,
 				authors: book.volumeInfo.authors || ["No author to display"],
 				title: book.volumeInfo.title,
 				description: book.volumeInfo.description,
 				image: book.volumeInfo.imageLinks?.thumbnail || "",
+				link: book.volumeInfo.infoLink || "",
 			}));
 
 			setSearchedBooks(bookData);
@@ -137,7 +140,17 @@ const SearchBooks = () => {
 								<Card.Body>
 									<Card.Title>{book.title}</Card.Title>
 									<p className="small">Authors: {book.authors}</p>
-									<Card.Text>{book.description}</Card.Text>
+									<Card.Text className>{book.description}</Card.Text>
+									<a
+										className="text-decoration-none"
+										href={book.link}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<Button className="btn-block btn-info mb-2">
+											Learn more.
+										</Button>
+									</a>
 									{Auth.loggedIn() && (
 										<Button
 											disabled={savedBookIds?.some(
