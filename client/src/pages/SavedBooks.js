@@ -20,37 +20,22 @@ const SavedBooks = () => {
 	const userData = data?.me || {};
 	console.log("userData: ", userData);
 
+	const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+
 	// use this to determine if `useEffect()` hook needs to run again
 	const userDataLength = Object.keys(userData).length;
-
-	// useEffect(() => {
-	// 	const getUserData = async () => {
-	// 		try {
-	// 			const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-	// 			if (!token) {
-	// 				return false;
-	// 			}
-
-	// 			// const response = await getMe(token);
-
-	// 			// if (!response.ok) {
-	// 			// 	throw new Error("something went wrong!");
-	// 			// }
-
-	// 			// const user = await response.json();
-	// 			// setUserData(user);
-	// 		} catch (err) {
-	// 			console.error(err);
-	// 		}
-	// 	};
-
-	// 	getUserData();
-	// }, [userDataLength]);
 
 	// create function that accepts the book's mongo _id value as param and deletes the book from the database
 	const handleDeleteBook = async (bookId) => {
 		console.log("bookId: ", bookId);
+
+		try {
+			const data = await removeBook({
+				variables: { bookId },
+			});
+		} catch (err) {
+			console.log(err);
+		}
 
 		// const token = Auth.loggedIn() ? Auth.getToken() : null;
 
