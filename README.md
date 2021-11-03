@@ -31,7 +31,7 @@ Use the power of GraphQL and the Google Books API to search and store books to r
 
 ## Links:
 
-- [Deployment](https://budget-buddy-dz.herokuapp.com/)
+- [Deployment](https://book-search-dz.herokuapp.com/)
 - [GitHub](https://github.com/dzamanillo/book-search)
 
 ## Contribution
