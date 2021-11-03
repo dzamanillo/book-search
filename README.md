@@ -1,17 +1,3 @@
-<style>
-.preview {
-    display: flex,
-    align-content: center
-    
-}
-.preview-img{
-    width: 300px
- 
-}
-
-
-</style>
-
 # Google Book Search
 
 ## About
